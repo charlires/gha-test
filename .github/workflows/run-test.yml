@@ -1,0 +1,15 @@
+name: learn-github-actions
+run-name: ${{github.actor}} is learning Github Actions
+on: workflow_dispatch
+jobs: 
+    install-dependencies: 
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-go@v5
+              with: 
+                go-version: '1.21.x'
+            - name: Display Go version
+              run: go version
+            - name: Run unit tests
+              run: go test -v
