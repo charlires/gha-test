@@ -29,10 +29,11 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - if: ${{ inputs.dry-run }} 
-          run: echo dry run
+          id: dry-run
+          run: echo "VAR1=SISENIOR" >> "$GITHUB_OUTPUT"
           env: 
             VAR1: SISENIOR
-        - run: echo ${{ env.VAR1 }}
+        - run: echo ${{ steps.dry-run.outputs.VAR1 }}
         - run: |
             echo "LEVEL: ${{ inputs.logLevel }}"
             echo "DRY-RUN: ${{ inputs.dry-run }}"
