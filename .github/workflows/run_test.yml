@@ -38,3 +38,6 @@ jobs:
             echo "LEVEL: ${{ inputs.logLevel }}"
             echo "DRY-RUN: ${{ inputs.dry-run }}"
             echo "ENVIRONMENT: ${{ inputs.environment }}"
+            echo "NO: $NO"
+          env: 
+            NO: 123
