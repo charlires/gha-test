@@ -11,8 +11,8 @@ on:
                     - info
                     - warning
                     - debug
-            tags:
-                description: 'Test scenario tags'
+            dry-run:
+                description: 'Test scenario'
                 required: false
                 type: boolean
             environment:
@@ -28,14 +28,12 @@ jobs:
     log-the-inputs:
         runs-on: ubuntu-latest
         steps:
+        - if: ${{inputs.dry-run }} 
+          run: echo dry run
+          env: 
+            VAR1: SISENIOR
+        - run: echo $VAR1 
         - run: |
-            VAR1="SISENIOR"
-        - run: |
-            echo "Log level: $LEVEL"
-            echo "Tags: $TAGS"
-            echo "Environment: $ENVIRONMENT"
-            echo "$VAR1"
-            echo "env:"
             echo "LEVEL: ${{ inputs.logLevel }}"
-            echo "TAGS: ${{ inputs.tags }}"
+            echo "DRY-RUN: ${{ inputs.dry-run }}"
             echo "ENVIRONMENT: ${{ inputs.environment }}"
