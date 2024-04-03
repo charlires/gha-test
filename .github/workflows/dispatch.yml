@@ -1,4 +1,4 @@
-name: pull request
+name: env vars test
 run-name: ${{github.actor}} is learning Github Actions
 on:
     workflow_dispatch:
