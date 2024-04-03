@@ -1,21 +1,15 @@
 name: env vars test
 run-name: ${{github.actor}} is learning Github Actions
-on:
-    workflow_dispatch:
-        inputs: 
-            dry-run: 
-                description: 'Test'
-                required: false
-                type: boolean
+on: workflow_dispatch
 
 env:
-    level: "debug"
-    tags: "test"
+    LEVEL: "debug"
+    TAGS: "test"
 
 jobs:
     log-the-inputs:
         runs-on: ubuntu-latest
         steps:
         - run: |
-            echo "Log level: ${{ github.env.level }}"
-            echo "Tags: ${{ github.env.tags }}"
+            echo "Log level: $LEVEL"
+            echo "Tags: $TAGS"
