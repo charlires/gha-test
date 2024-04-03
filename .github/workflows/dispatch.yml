@@ -1,0 +1,25 @@
+name: pull request
+run-name: ${{github.actor}} is learning Github Actions
+on:
+    workflow_dispatch:
+        inputs: 
+            dry-run: 
+                description: 'Test'
+                required: false
+                type: boolean
+
+env:
+    level: "debug"
+    tags: "test"
+
+jobs:
+    log-the-inputs:
+        runs-on: ubuntu-latest
+        steps:
+        - run: |
+            echo "Log level: $LEVEL"
+            echo "Tags: $TAGS"
+            echo "Environment: $ENVIRONMENT"
+            env:
+            LEVEL: ${{ env.level }}
+            TAGS: ${{ env.tags }}
