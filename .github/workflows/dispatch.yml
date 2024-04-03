@@ -17,9 +17,5 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - run: |
-            echo "Log level: $LEVEL"
-            echo "Tags: $TAGS"
-            echo "Environment: $ENVIRONMENT"
-            env:
-            LEVEL: ${{ github.env.level }}
-            TAGS: ${{ github.env.tags }}
+            echo "Log level: ${{ github.env.level }}"
+            echo "Tags: ${{ github.env.tags }}"
